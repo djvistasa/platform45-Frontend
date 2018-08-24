@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
 import { calculateRem } from '../../../utils/calculateRem';
 import inputFieldStyles from './inputFieldStyles';
 
 // NOTE: change yourElementType to your preferred type: e.g button
-const StyledInputField = styled(TextField)`
+const StyledInputField = styled(Input)`
   ${inputFieldStyles};
   > label {
       color: ${props => props.valid ? 'green' : 'initial'} !important;

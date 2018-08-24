@@ -22,6 +22,7 @@ import Avatar from '../../components/Avatar';
 import IntroCopy from '../../components/IntroCopy';
 import TogglePanelButton from '../../components/TogglePanelButton';
 import SlideOutPanel from '../../components/SlideOutPanel';
+import CustomerInfoForm from '../../components/Forms/CustomerInfoForm';
 import { StyledWrapper } from './styledComponents/styledWrapper';
 import { StyledRadiusMask } from './styledComponents/styledRadiusMask';
 
@@ -69,11 +70,12 @@ export class Home extends React.Component {
           'easeInOutQuart',
           () => {
           },
-          0
+          200
         );
       }
     });
   }
+  handleFormSubmit = (values) => console.log(values);
   render() {
     const { isPanelOpen, mainPanelHeight, isInitialLoad } = this.state;
     return (
@@ -101,6 +103,7 @@ export class Home extends React.Component {
             isInitialLoad={isInitialLoad}
           />
         </div>
+        <CustomerInfoForm onSubmit={this.handleFormSubmit}/>
       </div>
     );
   }

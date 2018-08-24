@@ -26,7 +26,7 @@ class SingleSelectOptionsGroup extends PureComponent {
     return (
       <div>
         <FormControl component="fieldset" required>
-          <FormLabel component="legend">{label}</FormLabel>
+          <FormLabel component="label">{label}</FormLabel>
           <RadioGroup
             aria-label={label}
             {...input}
