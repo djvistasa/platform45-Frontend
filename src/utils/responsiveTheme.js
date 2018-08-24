@@ -6,7 +6,7 @@ export const responsiveTheme = {
     maxWidth: 620,
     tablet: 768,
     tabletPlus: 960,
-    laptop: 1024,
+    laptop: 1025,
     monitor: 1220,
     big: 1440,
     bigger: 1680,

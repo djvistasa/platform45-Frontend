@@ -10,9 +10,13 @@ import StyledTogglePanelButton from './styledTogglePanelButton';
 
 
 function TogglePanelButton(props) {
-  const { handleClick } = props;
+  const { handleClick, isPanelOpen, isInitialLoad } = props;
   return (
-    <StyledTogglePanelButton onClick={handleClick} >
+    <StyledTogglePanelButton
+      onClick={handleClick}
+      isPanelOpen={isPanelOpen}
+      isInitialLoad={isInitialLoad}
+    >
       <i></i>
     </StyledTogglePanelButton>
   );
@@ -20,6 +24,8 @@ function TogglePanelButton(props) {
 
 TogglePanelButton.propTypes = {
   handleClick: PropTypes.func,
+  isPanelOpen: PropTypes.bool,
+  isInitialLoad: PropTypes.bool,
 };
 
 export default TogglePanelButton;

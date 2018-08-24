@@ -12,8 +12,18 @@ export const StyledWrapper =  styled.div`
   position: relative;
   z-index:2;
 
+    .mask {
+      width: 100%;
+      height :100%;
+      background: blue;
+      position: absolute;
+      top:0;
+    }
+
     ${breakpoint('tabletPlus')`
-      width: ${calculateRem(392)};
+      width: 41%;
+      border-bottom-left-radius: ${calculateRem(42.5)}
+      border-top-left-radius: ${calculateRem(42.5)}
     `}
 
 `;

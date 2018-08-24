@@ -23,6 +23,7 @@ import IntroCopy from '../../components/IntroCopy';
 import TogglePanelButton from '../../components/TogglePanelButton';
 import SlideOutPanel from '../../components/SlideOutPanel';
 import { StyledWrapper } from './styledComponents/styledWrapper';
+import { StyledRadiusMask } from './styledComponents/styledRadiusMask';
 
 /* eslint-disable react/prefer-stateless-function */
 export class Home extends React.Component {
@@ -31,6 +32,9 @@ export class Home extends React.Component {
     this.state = {
       isPanelOpen: false,
       mainPanelHeight: 0,
+      windowWidth: window.innerWidth,
+      resizeFunc: this.handleResize.bind(this),
+      isInitialLoad: true,
     }
     this.mainPanel = React.createRef();
     this.slideOutPanel = React.createRef();
@@ -39,22 +43,39 @@ export class Home extends React.Component {
   componentDidMount() {
     const mainPanelHeight = this.mainPanel.current.offsetHeight;
     this.setState({ mainPanelHeight });
+    window.addEventListener('resize', this.state.resizeFunc);
   }
+
+  componentDidUnMount() {
+    window.removeEventListener('resize', this.state.resizeFunc);
+  }
+  handleResize = () => {
+    const mainPanelHeight = this.mainPanel.current.offsetHeight;
+    this.setState({
+      windowWidth: window.innerWidth,
+      mainPanelHeight,
+      isPanelOpen: false,
+    });
+  };
+
   togglePanel() {
+    const { windowWidth } = this.state;
     const slideOutPanel = ReactDOM.findDOMNode(this.slideOutPanel.current);
-    this.setState({ isPanelOpen: !this.state.isPanelOpen }, () => {
-      scrollTo(
-        slideOutPanel,
-        1100,
-        'easeInOutQuart',
-        () => {
-        },
-        0
-      );
+    this.setState({ isPanelOpen: !this.state.isPanelOpen, isInitialLoad: false }, () => {
+      if (windowWidth < 768) {
+        scrollTo(
+          slideOutPanel,
+          1100,
+          'easeInOutQuart',
+          () => {
+          },
+          0
+        );
+      }
     });
   }
   render() {
-    const { isPanelOpen, mainPanelHeight } = this.state;
+    const { isPanelOpen, mainPanelHeight, isInitialLoad } = this.state;
     return (
       <div >
         <Helmet>
@@ -65,11 +86,20 @@ export class Home extends React.Component {
           <StyledWrapper >
             <Avatar />
             <IntroCopy />
-            <TogglePanelButton handleClick={() => this.togglePanel()} />
+            <TogglePanelButton
+              handleClick={() => this.togglePanel()}
+              isPanelOpen={isPanelOpen}
+              isInitialLoad={isInitialLoad}
+            />
           </StyledWrapper>
         </div>
+        <StyledRadiusMask mainPanelHeight={mainPanelHeight} />
         <div ref={this.slideOutPanel}>
-          <SlideOutPanel isPanelOpen={isPanelOpen} mainPanelHeight={mainPanelHeight} />
+          <SlideOutPanel
+            isPanelOpen={isPanelOpen}
+            mainPanelHeight={mainPanelHeight}
+            isInitialLoad={isInitialLoad}
+          />
         </div>
       </div>
     );
