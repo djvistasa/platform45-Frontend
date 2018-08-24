@@ -10,6 +10,7 @@ const togglePanelButtonStyles = css`
   background: ${siteTheme.colors.black};
   margin: auto;
   display: block;
+  transition: 0.25s transform ease;
 
     i {
       border: solid ${siteTheme.colors.sunflowerYellow};
