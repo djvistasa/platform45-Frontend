@@ -25,10 +25,15 @@ const slideOutPanelStyles = css`
       line-height: 1.53;
     }
 
-      ${breakpoint('tabletPlus')`
+    ${breakpoint('tabletPlus')`
       max-width: ${calculateRem(423)};
       margin: auto;
       padding-top: ${calculateRem(164)};
+    `}
+
+    ${breakpoint('laptop')`
+      max-width: ${calculateRem(577)};
+      padding-top: ${calculateRem(161)};
     `}
   }
 
