@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledFormFieldError from './styledFormFieldError'
+import StyledFormFieldError from './styledComponents/styledFormFieldError'
 
 function FormFieldError(props) {
   const { error } = props;

@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledFormFieldWarning from './styledFormFieldWarning'
+import StyledFormFieldWarning from './styledComponents/styledFormFieldWarning'
 
 function FormFieldWarning(props) {
   const { warning } = props;

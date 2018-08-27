@@ -11,7 +11,7 @@ export const passwordConfirmation = (passwordFieldName) => (value, values) => (
 );
 
 export const emailValidation = (value) => (
-  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Email not valid' : null
+  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' : null
 );
 
 export const maxValue = (max) => (value) => (

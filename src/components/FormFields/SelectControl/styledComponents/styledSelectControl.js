@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Select from '@material-ui/core/Select';
-import { calculateRem } from '../../../utils/calculateRem';
+import { calculateRem } from '../../../../utils/calculateRem';
 import selectControlStyles from './selectControlStyles';
 
 

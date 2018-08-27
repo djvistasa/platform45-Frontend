@@ -6,15 +6,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledSlideOutPanel from './styledSlideOutPanel'
+import StyledSlideOutPanel from './styledComponents/styledSlideOutPanel'
 
 
 function SlideOutPanel(props) {
-  const { isPanelOpen, mainPanelHeight, initialLoad } = props;
+  const { isPanelOpen, mainPanelHeight, initialLoad, formHeight } = props;
   return (
     <StyledSlideOutPanel
       isPanelOpen={isPanelOpen}
       mainPanelHeight={mainPanelHeight}
+      formHeight={formHeight}
       initialLoad={initialLoad}
     >
       <div>
@@ -31,6 +32,7 @@ SlideOutPanel.propTypes = {
   isPanelOpen: PropTypes.bool,
   initialLoad: PropTypes.bool,
   mainPanelHeight: PropTypes.number,
+  formHeight: PropTypes.number,
 };
 
 export default SlideOutPanel;

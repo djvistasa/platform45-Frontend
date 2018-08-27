@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledButton from './styledButton';
+import StyledButton from './styledComponents/styledButton';
 
 export function Button(props) {
   const {
@@ -15,7 +15,7 @@ export function Button(props) {
     onClick,
     type,
     borderRadius = false,
-    primary = true,
+    primary = false,
     width,
   } = props;
 

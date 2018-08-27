@@ -1,12 +1,13 @@
 import { css } from 'styled-components';
-import { siteTheme } from '../../utils/variables';
-import { calculateRem } from '../../utils/calculateRem';
+import { siteTheme } from '../../../utils/variables';
+import { calculateRem } from '../../../utils/calculateRem';
 import breakpoint from 'styled-components-breakpoint';
 
 const slideOutPanelStyles = css`
   background: ${siteTheme.colors.tangerine};
   position: absolute;
   padding: ${calculateRem(59)} ${calculateRem(20)};
+  z-index: 1;
 
   div {
 
@@ -31,7 +32,7 @@ const slideOutPanelStyles = css`
       padding-top: ${calculateRem(164)};
     `}
 
-    ${breakpoint('laptop')`
+    ${breakpoint('monitor')`
       max-width: ${calculateRem(577)};
       padding-top: ${calculateRem(161)};
     `}
