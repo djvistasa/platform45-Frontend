@@ -9,20 +9,33 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form/immutable';
 import Button from '../../../components/Button';
 import InputField from '../../../components/FormFields/InputField';
+import DatePicker from '../../../components/FormFields/DatePicker';
 import SingleSelectOptionsGroup from '../../../components/FormFields/SingleSelectOptionsGroup';
-import StyledCustomerInfoForm from './styledCustomerInfoForm'
+import MaleIcon from '../../../assets/icons/male.svg';
+import MaleIconChecked from '../../../assets/icons/male-checked.svg';
+import FemaleIcon from '../../../assets/icons/female.svg';
+import FemaleIconChecked from '../../../assets/icons/female-checked.svg';
+import CardIcon from '../../../assets/icons/card.svg';
+import CardIconChecked from '../../../assets/icons/card-checked.svg';
+import StyledCustomerInfoForm from './styledComponents/styledCustomerInfoForm';
+import StyledButtonWrapper from './styledComponents/styledButtonWrapper';
+import { emailValidation } from '../validation';
 
 
 function CustomerInfoForm(props) {
-  const { handleSubmit, submitting } = props;
+  const { handleSubmit, submitting, invalid } = props;
   const genderOptions = [
     {
       id: 0,
       title: 'Male',
+      icon: MaleIcon,
+      checkedIcon: MaleIconChecked,
     },
     {
       id: 1,
       title: 'Female',
+      icon: FemaleIcon,
+      checkedIcon: FemaleIconChecked,
     },
   ];
 
@@ -30,16 +43,25 @@ function CustomerInfoForm(props) {
     {
       id: 0,
       title: 'Classic',
+      icon: CardIcon,
+      checkedIcon: CardIconChecked,
     },
     {
       id: 1,
       title: 'Silver',
+      icon: CardIcon,
+      checkedIcon: CardIconChecked,
     },
     {
       id: 2,
       title: 'Gold',
+      icon: CardIcon,
+      checkedIcon: CardIconChecked,
     },
   ];
+
+  const clearForm = () => props.reset();
+
   return (
     <StyledCustomerInfoForm onSubmit={handleSubmit} >
       <Field
@@ -59,8 +81,8 @@ function CustomerInfoForm(props) {
 
       <Field
         name={'date'}
-        component={InputField}
-        placeholder={'Name'}
+        component={DatePicker}
+        placeholder={'01/02/1983'}
         label={'Date of birth'}
         type={'date'}
       />
@@ -70,7 +92,8 @@ function CustomerInfoForm(props) {
         component={InputField}
         placeholder={'Email'}
         label={'Email'}
-        type={'email'}
+        type={'text'}
+        validate={[emailValidation]}
       />
 
       <Field
@@ -88,15 +111,18 @@ function CustomerInfoForm(props) {
         label={'Customer ID'}
         type={'text'}
       />
-
       <Field
         name={'membership'}
         component={SingleSelectOptionsGroup}
         options={membershipOptions}
         label={'Membership'}
       />
-      <Button title={'Cancel'} type={'button'} secondary disabled={submitting}/>
-      <Button title={'Save'} type={'submit'} primary disabled={submitting}/>
+
+      <StyledButtonWrapper>
+        <Button title={'Cancel'} type={'button'} onClick={() => clearForm()}/>
+        <Button title={'Save'} type={'submit'} primary disabled={submitting || invalid}/>
+      </StyledButtonWrapper>
+
     </StyledCustomerInfoForm>
   );
 }
@@ -104,6 +130,7 @@ function CustomerInfoForm(props) {
 CustomerInfoForm.propTypes = {
   onSubmit: PropTypes.func,
   submitting: PropTypes.bool,
+  invalid: PropTypes.bool,
 };
 
 export default reduxForm({

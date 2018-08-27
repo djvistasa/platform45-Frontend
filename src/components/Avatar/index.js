@@ -6,7 +6,7 @@
 
 import React from 'react';
 import AvatarIcon from '../../assets/icons/avatar.svg';
-import StyledAvatar from './styledAvatar';
+import StyledAvatar from './styledComponents/styledAvatar';
 
 
 function Avatar() {

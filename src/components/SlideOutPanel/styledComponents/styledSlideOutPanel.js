@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import slideOutPanelStyles from './slideOutPanelStyles';
-import { calculateRem } from '../../utils/calculateRem';
+import { calculateRem } from '../../../utils/calculateRem';
 import breakpoint from 'styled-components-breakpoint';
 
 const fadeIn = keyframes`
@@ -14,7 +14,9 @@ const fadeIn = keyframes`
 // NOTE: change yourElementType to your preferred type: e.g button
 const StyledSlideOutPanel = styled.div`
   ${ slideOutPanelStyles };
+  transition: 0,25s top ease;
   top: ${props => props.isPanelOpen ? calculateRem(props.mainPanelHeight) : 0}
+  height: ${props => props.isPanelOpen ? calculateRem(props.formHeight) : 0};
 
   ${breakpoint('tabletPlus')`
     top: 0;

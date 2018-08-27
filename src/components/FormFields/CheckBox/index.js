@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FormFieldError from '../FormFieldError';
 import FormFieldWarning from '../FormFieldWarning';
-import StyledCheckBox from './styledCheckBox';
+import StyledCheckBox from './styledComponents/styledCheckBox';
 
 function CheckBox(props) {
   const {

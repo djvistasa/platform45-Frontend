@@ -6,21 +6,22 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledRadioButton from './styledRadioButton'
+import StyledRadioButton from './styledComponents/styledRadioButton';
+import StyledLabel from './styledComponents/styledLabel';
 
 function RadioButton(props) {
-  const { input, label, checked, defaultChecked, value } = props;
+  const { label, checked, defaultChecked, value } = props;
 
   const field = (checked || defaultChecked) ?
-    (<StyledRadioButton {...input} checked={checked} defaultChecked={defaultChecked} type="radio" />) :
-    (<StyledRadioButton {...input} value={value} type="radio" />);
+    (<StyledRadioButton {...props} checked={checked} id={'styled-radio'} defaultChecked={defaultChecked} type="radio" />) :
+    (<StyledRadioButton {...props} value={value} id={'styled-radio'} type="radio" />);
 
   return (
-    <label htmlFor={input.name}>
+    <StyledLabel htmlFor={props.name} checked={checked}>
       {field}
-      <span>&nbsp;</span>
+      <span className="spacer">&nbsp;</span>
       { label }
-    </label>
+    </StyledLabel>
   );
 }
 

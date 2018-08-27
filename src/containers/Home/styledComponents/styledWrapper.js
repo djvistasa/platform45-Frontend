@@ -10,7 +10,7 @@ export const StyledWrapper =  styled.div`
   min-height:100vh;
   padding-bottom: ${calculateRem(116.3)};
   position: relative;
-  z-index:2;
+  z-index:3;
 
     .mask {
       width: 100%;

@@ -11,7 +11,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormFieldError from '../FormFieldError';
 import FormFieldWarning from '../FormFieldWarning';
-import StyledSelectControl from './styledSelectControl'
+import StyledSelectControl from './styledComponents/styledSelectControl'
 
 
 function SelectControl(props) {
